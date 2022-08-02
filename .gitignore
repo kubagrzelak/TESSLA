@@ -1,0 +1,9 @@
+# Python specific
+env/
+__pycache__/
+
+# Macbook specific
+.DS_Store
+
+# vscode specific
+.vscode/*.log
