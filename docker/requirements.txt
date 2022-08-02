@@ -1,2 +1,5 @@
 torch
 nibabel
+nnunet
+scipy
+skimage

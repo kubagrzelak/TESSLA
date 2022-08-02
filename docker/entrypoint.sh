@@ -4,14 +4,20 @@
 # PIPESTATUS with a simple $?, but I don’t do that.
 set -o errexit -o pipefail -o noclobber -o nounset
 
-echo "[INFO - entrypoint] Starting entrypoint script for TESSLA"
+echo "[INFO - entrypoint] Starting entrypoint script for TESSLA ..."
 
 export RESULTS_FOLDER="/tessla/models/nnUNet_trained_models"
 
-#for file in *_h.png
-#do
-#  mv "$file" "${file/_h.png/_half.png}"
-#done
+mkdir input_Task001_Blood
+mkdir output_Task001_Blood
 
-echo "[INFO - entrypoint] Starting TESSLA pipeline"
+mkdir input_Task002_Scar
+mkdir output_Task002_Scar
+
+mkdir input_Task003_Scar
+mkdir output_Task003_Scar
+
+#echo $(ls)
+
+echo "[INFO - entrypoint] Starting TESSLA pipeline ..."
 python3 /tessla/src/main.py
