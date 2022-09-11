@@ -2,6 +2,8 @@
 
 Two-Stage Ensemble Scar Segmentation for the Left Atrium proposed for the [LAScarQS 2022: Left Atrial and Scar Quantification & Segmentation Challenge in conjunction with STACOM and MICCAI 2022 (Sep 18th, 2022, Singapore)](https://zmiclab.github.io/projects/lascarqs22/index.html).
 
+TESSLA Conference Paper: DOI: [10.13140/RG.2.2.34959.05281](http://dx.doi.org/10.13140/RG.2.2.34959.05281)
+
 ## Tasks
 
 * Task001_Blood -> Segmentation of left atrium blood pool from LGE-MRI
