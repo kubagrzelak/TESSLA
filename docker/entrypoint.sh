@@ -17,7 +17,7 @@ mkdir output_Task002_Scar
 mkdir input_Task003_Scar
 mkdir output_Task003_Scar
 
-#echo $(ls)
+mkdir ../output
 
 echo "[INFO - entrypoint] Starting TESSLA pipeline ..."
-python3 /tessla/src/main.py
+python /tessla/src/main.py

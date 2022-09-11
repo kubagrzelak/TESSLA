@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import nibabel as nib
+import datetime
 
 from scipy import ndimage
 from skimage import segmentation
@@ -47,8 +48,11 @@ def get_iir_wall(blood_pool, mri_image):
 def iir_processing():
     log.info('Start IIR processing ...')
 
+    start_time = datetime.datetime.now()
+    log.info(f'\tStart time: {start_time}')
+
     # get LGE-MRIs
-    mri_files_original = os.listdir('/input_Task001_Blood')
+    mri_files_original = os.listdir('./input_Task001_Blood')
     mri_files = []
     for file in mri_files_original:
         if file.endswith('.nii.gz'):
@@ -56,7 +60,7 @@ def iir_processing():
     mri_files.sort()
 
     # get blood pool segmentation
-    bloodpool_files_original = os.listdir('/output_Task001_Blood')
+    bloodpool_files_original = os.listdir('./output_Task001_Blood')
     bloodpool_files = []
     for file in bloodpool_files_original:
         if file.endswith('.nii.gz'):
@@ -70,12 +74,12 @@ def iir_processing():
 
         # load mri file
         log.info(f'\tLoading:\t{mri_files[i]}\t{bloodpool_files[i]} ...')
-        mri_nib = nib.load('/input_Task001_Blood/' + mri_files[i])
+        mri_nib = nib.load('./input_Task001_Blood/' + mri_files[i])
         mri = np.array(mri_nib.dataobj)
         mri = mri.astype(np.uint8)
 
         # load blood pool segmentation
-        atrium_nib = nib.load('/output_Task001_Blood/' + bloodpool_files[i])
+        atrium_nib = nib.load('./output_Task001_Blood/' + bloodpool_files[i])
         atrium = np.array(atrium_nib.get_fdata())
         atrium = atrium / np.max(atrium)
 
@@ -84,12 +88,14 @@ def iir_processing():
 
         # save files as input to Task003_Scar
         log.info('\tSaving as input to Task003_Scar ...')
-        iir_wall_filename = 'SCAR_' + _id + '0000.nii.gz'
+        iir_wall_filename = 'SCAR_' + _id + '_0000.nii.gz'
         iir_wall = nib.Nifti1Image(iir_wall, atrium_nib.affine)
         log.info(f'\t\tIIR wall > {iir_wall_filename}')
-        nib.save(iir_wall, f'/input_Task003_Scar/{iir_wall_filename}')
+        nib.save(iir_wall, f'./input_Task003_Scar/{iir_wall_filename}')
 
-        mri_filename = 'SCAR_' + _id + '0001.nii.gz'
+        mri_filename = 'SCAR_' + _id + '_0001.nii.gz'
         mri = nib.Nifti1Image(mri, mri_nib.affine)
         log.info(f'\t\tMRI > {mri_filename}')
-        nib.save(mri, f'/input_Task003_Scar/{mri_filename}')
+        nib.save(mri, f'./input_Task003_Scar/{mri_filename}')
+
+    log.info(f'End time: {datetime.datetime.now()} (Start time: {start_time})')

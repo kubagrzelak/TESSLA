@@ -7,3 +7,6 @@ __pycache__/
 
 # vscode specific
 .vscode/*.log
+
+# models
+models/

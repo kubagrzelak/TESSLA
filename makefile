@@ -7,5 +7,5 @@ run_image:
 .phone: run_image
 
 run_simulate_competition:
-	docker run -v /Users/kuba/Desktop/test_inputs:/input:ro -v :/output -it ai4af/tessla:latest
+	docker run -v /test_inputs:/input:ro -v :/output -it ai4af/tessla:latest
 .phone: run_simulate_competition
