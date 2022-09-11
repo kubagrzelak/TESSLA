@@ -1,6 +1,6 @@
 # TESSLA
 
-Two-Stage Ensemble Scar Segmentation for the Left Atrium proposed for the LAScarQS 2022: Left Atrial and Scar Quantification & Segmentation Challenge in conjunction with STACOM and MICCAI 2022 (Sep 18th, 2022, Singapore).
+Two-Stage Ensemble Scar Segmentation for the Left Atrium proposed for the [LAScarQS 2022: Left Atrial and Scar Quantification & Segmentation Challenge in conjunction with STACOM and MICCAI 2022 (Sep 18th, 2022, Singapore)](https://zmiclab.github.io/projects/lascarqs22/index.html).
 
 ## Tasks
 
