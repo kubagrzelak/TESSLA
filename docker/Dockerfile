@@ -1,10 +1,10 @@
-FROM python:3.8-slim
+FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime
 
 # copy docker-entrypoint and requirements to initialize multi-stage build
 COPY ./docker/entrypoint.sh ./docker/requirements.txt /tessla/docker/
 
 # implement multi-stage build to leverage build cache (does not re-install packages when code changes)
-RUN pip3 install -r /tessla/docker/requirements.txt
+RUN pip install -r /tessla/docker/requirements.txt
 
 # copy assets folder
 COPY ./assets /tessla/assets
